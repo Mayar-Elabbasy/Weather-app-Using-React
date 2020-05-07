@@ -1,16 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Weather extends Component {
-    // state = {  }
-    render() { 
+
+const Weather = (props) => {
         return ( 
         <div className="container">
-            <div className="cards">
-                <h1>Egypt</h1>
+            <div className="cards mt-5">
+                <h1>{props.city}, {props.country}</h1>
+                <h5 className="py-4">
+                <i className={`wi ${props.weatherIcon} display-4`}></i>
+                </h5>
+                <h1 className="py-2">
+                    {props.temp_celsius}&deg;
+                </h1>
+                {minMaxTemperature(props.temp_min, props.temp_max)}
+                <h4 className="py-2">{props.description}</h4>
+
             </div>
         </div>
         );
+   
+        function minMaxTemperature(min, max) {
+            return(
+                <h3>
+                    <span className="px-4">{min}&deg;</span>
+                    <span className="px-4">{max}&deg;</span>
+                </h3>
+            );
+            
+        }
     }
-}
+
+
+    
+
  
 export default Weather;
